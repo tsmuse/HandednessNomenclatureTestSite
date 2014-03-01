@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+
+    </head>
+    <body>
+    
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <p class="navbar-text">Please evaluate each image using "1-hand" or "2 hands"</p>
+                        <button id="nextButton" class="btn-lg btn-primary" onclick="nextImage()">Next Image</button>
+                        <!-- <button id="testButton" class="btn-lg btn-primary" onclick="testEnd()">Test End</button> -->
+                    </div>
+                </div>
+            </nav>
+
+      
+                <div id="imageSlider" class="carousel" data-ride="carousel" data-interval="false">
+                    <!-- skipping indicators -->
+                    <!-- all images, in order -->
+                    <div class="carousel-inner">
+                        <div class="active item"><img src="img/phoneLandscape01.jpg" alt="test image"/></div>
+                        <div class="item"><img src="img/phoneLandscape02.jpg" alt="test image"/></div>
+                        <div class="item"><img src="img/phoneLandscape03.jpg" alt="test image"/></div>
+                        <div class="item"><img src="img/phoneLandscape04.jpg" alt="test image"/></div>
+                        <div class="item"><img src="img/phoneLandscape05.jpg" alt="test image"/></div>
+                        <div class="item"><img src="img/phoneLandscape06.jpg" alt="test image"/></div>
+                        <div class="item"><img src="img/phonePortrait01.jpg" alt="test image"/></div>
+                        <div class="item"><img src="img/phonePortrait02.jpg" alt="test image"/></div>
+                        <div class="item"><img src="img/phonePortrait03.jpg" alt="test image"/></div>
+                        <div class="item"><img src="img/phonePortrait04.jpg" alt="test image"/></div>
+                        <div class="item"><img src="img/phonePortrait05.jpg" alt="test image"/></div>
+                        <div class="item"><img src="img/phonePortrait06.jpg" alt="test image"/></div>
+                        <div class="item"><img src="img/phonePortrait07.jpg" alt="test image"/></div>
+                        <div class="item"><img src="img/phonePortrait08.jpg" alt="test image"/></div>
+                        <div class="item"><img src="img/phonePortrait09.jpg" alt="test image"/></div>
+                        <div class="item"><img src="img/tabletLandscape01.jpg" alt="test image"/></div>
+                        <div class="item"><img src="img/tabletLandscape02.jpg" alt="test image"/></div>
+                        <div class="item"><img src="img/tabletLandscape03.jpg" alt="test image"/></div>
+                        <div class="item"><img src="img/tabletLandscape04.jpg" alt="test image"/></div>
+                        <div class="item"><img src="img/tabletLandscape05.jpg" alt="test image"/></div>
+                        <div class="item"><img src="img/tabletLandscape06.jpg" alt="test image"/></div>
+                        <div class="item"><img src="img/tabletLandscape07.jpg" alt="test image"/></div>
+                        <div class="item"><img src="img/tabletLandscape08.jpg" alt="test image"/></div>
+                        <div class="item"><img src="img/tabletLandscape09.jpg" alt="test image"/></div>
+                        <div class="item"><img src="img/tabletLandscape10.jpg" alt="test image"/></div>
+                        <div class="item"><img src="img/tabletLandscape11.jpg" alt="test image"/></div>
+                        <div class="item"><img src="img/tabletLandscape12.jpg" alt="test image"/></div>
+                        <div class="item"><img src="img/tabletPortrait01.jpg" alt="test image"/></div>
+                        <div class="item"><img src="img/tabletPortrait02.jpg" alt="test image"/></div>
+                        <div class="item"><img src="img/tabletPortrait03.jpg" alt="test image"/></div>
+                        <div class="item"><img src="img/tabletPortrait04.jpg" alt="test image"/></div>
+                        <div class="item"><img src="img/tabletPortrait05.jpg" alt="test image"/></div>
+                        <div class="item"><img src="img/tabletPortrait06.jpg" alt="test image"/></div>
+                        <div class="item"><img src="img/tabletPortrait07.jpg" alt="test image"/></div>
+                        <div class="item"><img src="img/tabletPortrait08.jpg" alt="test image"/></div>
+                        <div class="item" style="text-align:center"><h1>Thank you for your help!</h1><i class="fa fa-smile-o fa-5x"></i></div>
+                    </div>
+                    <!-- no in carousel nav -->
+                </div>
+        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+       <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>    
+        <script>
+            var imageOrder = [0];
+            var currentImage = 0;
+
+            while (imageOrder.length < 35) {
+                var num = Math.floor(Math.random() * (34 - 1 + 1) + 1);
+                var uniqueNum = true;
+                
+                for (x = 0; x < imageOrder.length; x++) {
+                    if (imageOrder[x] == num) {
+                        uniqueNum = false;
+                    }   
+                }
+                if (uniqueNum) {
+                    imageOrder.push(num);
+                }
+            }
+
+            function nextImage() {
+                 currentImage++;
+                $('.carousel').carousel(imageOrder[currentImage]);
+                if (currentImage > (imageOrder.length -1)) {
+                   $('#nextButton').css('display', 'none');
+                    $('.carousel').carousel(35);
+                }
+            }
+            
+            function testEnd(){
+                 $('.carousel').carousel(35);
+            }
+        </script>
+    </body>
+</html>
